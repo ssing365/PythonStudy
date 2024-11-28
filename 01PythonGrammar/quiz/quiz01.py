@@ -6,16 +6,12 @@
 출력: 각 자릿수의 합 (예: 10)
 '''
 def sum_of_digits():
-    user_input = input("양의 정수를 입력하세요 : ")
-    inputList = []
+    strNum = input("양의 정수를 입력하세요 : ")
     sum = 0
-    for x in user_input:
-        inputList.append(x)
-
-    for i in inputList:
-        a = int(i)
-        sum += a       
     
-    print(sum)
+    for x in strNum:
+        sum += int(x)
+    
+    return sum
 
-sum_of_digits()
+print(sum_of_digits())

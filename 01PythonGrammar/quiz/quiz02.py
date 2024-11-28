@@ -6,9 +6,8 @@
 입력: 문자열 s (예: "radar")
 출력: True 또는 False
 '''
-
-def is_palindrome():
-    s = input("문자열을 입력하세요 : ")
+s = input("문자열을 입력하세요 : ")
+def is_palindrome(s):
     result = True
 
     left = 0
@@ -20,6 +19,19 @@ def is_palindrome():
         left += 1
         right -= 1
         
-    print(result)
+    return result
     
-is_palindrome()
+print(is_palindrome(s))
+
+#다른 방법
+def is_palindrome2(s):
+    reverseStr = s[::-1] #''.join(reversed(s))
+    result = True
+    
+    if(reverseStr != s):
+        result = False
+    
+    return result
+
+print(is_palindrome2(s))
+        

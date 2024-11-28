@@ -6,13 +6,15 @@
 입력: 정수 n (예: 7)
 출력: True 또는 False
 '''
+n = int(input("정수를 입력하세요 : "))
 
-def is_prime():
+def is_prime(n):
     result = True
-    n = int(input("정수를 입력하세요 : "))
+    
     for i in range(2, n):
         if n%i == 0:
             result = False
-    print(result)
+            
+    return result
     
-is_prime()
+print(is_prime(n))

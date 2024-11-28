@@ -15,7 +15,7 @@ result = map(multiply_by_two, numbers)
 #결과1 : map Object로 출력됨
 print("결과 1-1", result)
 #결과2 : Object를 List로 변환 후 출력
-print("결과1-2", list(result))
+print("결과 1-2", list(result))
 
 #2.filter 함수
 '''

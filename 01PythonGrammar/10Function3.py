@@ -19,7 +19,7 @@ print('min=', min(data1))
 print(f"{'enumerate()':-^30}")
 for i, v in enumerate(data1):
     print(i, v, end=', ')
-print()
+print('')
 
 #딕셔너리 출력
 data2 = dict(birth=1970, name="홍길동", size="100cm")
