@@ -49,13 +49,16 @@ iter() : 반복을 끝낼 값을 지정하면 특정 값이 나올 때 반복을
 '''
 it = iter([1,2,3,4,5,99])
 while it:
-    row = next(it)
-    if row == 99:
+    try:
+        row = next(it)
+        print(row, end=', ')
+    except Exception as e:
+        print("더 이상 출력할 항목이 없습니다.", e)
         break
-    print(row, end=', ')
+        
     '''
     위 문장은 더 이상 출력할 항목이 없을 경우 next()에서 예외가 발생되면서 실행이 중지된다.
-    이 부분은 예외처리에서 학습할 예정
+    이 부분은 예외처리에서 학습할 예정 =>완
     '''
 print()
 

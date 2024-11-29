@@ -72,3 +72,84 @@ INSERT INTO tb_date(DATE1, DATE2) VALUES ('2023-02-25', NOW());
 INSERT INTO tb_date(DATE1) VALUES ('2023-02-27');
 
 SELECT * FROM tb_date;
+
+#3. 문자형
+CREATE TABLE tb_string(
+	idx INT PRIMARY KEY AUTO_INCREMENT,
+	
+	str1 VARCHAR(30) NOT NULL,
+	str2 TEXT
+);
+DESC tb_string;
+
+INSERT INTO tb_string(str1, str2) VALUES ('난 짧은글3', '난 엄청 긴글3');
+INSERT INTO tb_string(str1, str2) VALUES ('난 짧은글2', '난 엄청 긴글2');
+INSERT INTO tb_string(str1, str2) VALUES ('난 짧은글1', '난 엄청 긴글1');
+
+/*
+레코드 조회시 조건 추가하기
+*/
+SELECT * FROM tb_string;
+SELECT * FROM tb_string WHERE idx = 2;
+SELECT * FROM tb_string WHERE idx = 2; AND str1='난 짧은글2';
+SELECT * FROM tb_string WHERE idx = 2; AND str1='난 짧은글3';
+SELECT * FROM tb_string WHERE idx = 2; or str1='난 짧은글3';
+
+/*
+레코드 겁색시 문자열이 포함된 것을 인출하고 싶다면 like절을 사용한다.
+*/
+SELECT * FROM tb_string WHERE str1 LIKE '%난 짧은%';
+SELECT * FROM tb_string WHERE str1 LIKE '난 짧은%';
+SELECT * FROM tb_string WHERE str1 LIKE '%난 짧은';
+
+#4. 특수형
+CREATE TABLE tb_spec(
+	idx INT AUTO_INCREMENT,
+	/* 여러 항목 중 1개만 선택할 수 있다. */
+	spec1 ENUM('M', 'W', 'T'),
+	/* 항목에서 2개 이상 선택할 수 있다. */
+	spec2 SET('A', 'B', 'C', 'D'),
+	/* 아웃라인 방식으로 컬럼을 먼저 생성한 후 별도로 기본키를 지정한다.*/
+	PRIMARY KEY (idx)
+);
+
+INSERT INTO tb_spec (spec1, spec2) VALUES ('W', 'A,B,C');#정상입력
+INSERT INTO tb_spec (spec1, spec2) VALUES ('X', 'A,B,C');#spec1에러
+INSERT INTO tb_spec (spec1, spec2) VALUES ('M', 'X,B,C');#spec2에러
+#spec1은 not null로 지정되지 않았으므로 null을 허용하는 컬럼이다.
+INSERT INTO tb_spec (spec2) VALUES ('B,C,D'); 
+SELECT * FROM tb_spec;
+
+CREATE TABLE board(
+	num INT NOT NULL AUTO_INCREMENT, # 일련번호. 자동증가컬럼
+	title VARCHAR(200) NOT NULL, #제목 : 짧은 텍스트
+	content TEXT NOT NULL, # 내용 : 긴 텍스트 
+	id VARCHAR(20) NOT NULL,
+	postdate DATETIME DEFAULT CURRENT_TIMESTAMP, #작성일. 현재 시각이 default
+	visitcount MEDIUMINT, #조회수 : 대략 800만 이하
+	PRIMARY KEY(num) #일련번호 컬럼은 아웃라인 방식으로 pk로 지정
+);
+
+#더미데이터 입력
+#날짜의 경우 now()함수를 통해 입력한다.
+#특히 일련번호 컬럼인 num은 쿼리문에서 생략된 상태로 실행한다.
+INSERT INTO board
+	(title, content, id, postdate, visitcount)
+VALUES ('제목1', '내용1입니다.', 'korea', NOW(), 0);
+INSERT INTO board
+	(title, content, id, postdate, visitcount)
+VALUES ('제목2', '내용2입니다.', 'korea', NOW(), 0);
+INSERT INTO board
+	(title, content, id, postdate, visitcount)
+VALUES ('제목3', '내용3입니다.', 'korea', NOW(), 0);
+INSERT INTO board
+	(title, content, id, postdate, visitcount)
+VALUES ('제목4', '내용4입니다.', 'korea', NOW(), 0);
+INSERT INTO board
+	(title, content, id, postdate, visitcount)
+VALUES ('제목5', '내용5입니다.', 'korea', NOW(), 0);
+
+SELECT * FROM board;
+SELECT * FROM board ORDER BY num DESC;
+SELECT * FROM board ORDER BY num ASC;
+SELECT * FROM board ORDER BY num;
