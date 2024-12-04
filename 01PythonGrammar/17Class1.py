@@ -11,9 +11,10 @@ class Person:
         print(f"나이 : {self.age}")
     def justDoit(self, act):
         print(f"{self.name}님이 {act}를 합니다. ")
-    # Java의 toString()과 동일하게 인스턴스 변수를 출력할 때 문자열을 반환해준다.
-    # def __str__(self):
-    #   return f"제 이름은 {self.name}({self.age})입니다."
+    
+    # __str__() : Java의 toString()과 동일하게 인스턴스 변수를 출력할 때 문자열을 반환해준다.
+    #def __str__(self):
+     #  return f"제 이름은 {self.name}({self.age})입니다."
 
 #인스턴스 생성
 person1 = Person('박찬호', 30)
@@ -26,6 +27,5 @@ person1.justDoit('야구')
 toString의 역할을 하는 __str__를 통해 반환된 문자열이 출력된다
 만약 이 함수를 정의하지 않으면 인스턴스의 참조값(주소값)이 출력된다.
 '''
-
 print(person2)
 person2.justDoit('축구')

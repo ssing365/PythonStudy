@@ -68,5 +68,7 @@ print("계산횟수", MyCalculator.calCount)
 MyCalculator.otherNumMulti(cal1, 10)
 MyCalculator.otherNumMulti(cal2, 10)
 
+print("계산횟수-최종", MyCalculator.calCount)
+
 # 인스턴스 메서드는 클래스명으로 호출불가
 # MyCalculator.calculate('/')
