@@ -5,12 +5,14 @@ age = 99
 address = '서울시 종로구 관철동'
 times = {'JAVA' : 20, 'HTML' : 2, 'Oracle' : 10, 'Python' : 3}
 
+# 저장(피클링)
 with open('./saveFiles/jong-ro.p', 'wb') as file:
     pickle.dump(name, file)
     pickle.dump(age, file)
     pickle.dump(address, file)
     pickle.dump(times, file)
 
+# 불러오기 (언피클링)
 with open('./saveFiles/jong-ro.p', 'rb') as file:
     name = pickle.load(file)
     age = pickle.load(file)
